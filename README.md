@@ -1,24 +1,29 @@
 # 🌍 AI Hybrid Travel Assistant
 
-An intelligent travel assistant that combines vector search, graph databases, and large language models to deliver personalized and context-aware travel recommendations.
+An AI-powered travel assistant that combines **vector search (Pinecone)**, **graph databases (Neo4j)**, and **large language models** to generate intelligent, context-aware travel recommendations.
 
 ---
 
 ## 🚀 Overview
 
-The **AI Hybrid Travel Assistant** is built to provide smart travel guidance by integrating multiple AI techniques. Instead of relying on a single approach, it combines semantic understanding, relationship-based reasoning, and conversational memory to generate accurate and meaningful responses.
+This project implements a **hybrid AI system** that enhances travel planning by combining:
 
-This hybrid design allows the system to understand user intent better and provide more relevant travel suggestions.
+* Semantic understanding using embeddings
+* Relationship-based insights using graph databases
+* Natural language responses using LLMs
+* Context retention using conversational memory
+
+The system is capable of answering complex travel queries and supporting multi-turn conversations.
 
 ---
 
-## 🧠 Features
+## 🧠 Key Features
 
-* 🔍 Semantic search using vector embeddings
-* 🧩 Graph-based reasoning using relationships
-* 💬 Context-aware multi-turn conversations
-* 🗺️ Personalized travel recommendations
-* ⚡ Efficient and scalable system design
+* 🔍 Semantic search with embeddings (Hugging Face)
+* 🧩 Graph-based reasoning using Neo4j
+* 💬 Context-aware conversations with LangChain memory
+* 🗺️ Intelligent itinerary and travel suggestions
+* ⚡ Hybrid architecture for better accuracy
 
 ---
 
@@ -35,56 +40,61 @@ Neo4j Graph Query
    ↓
 Hybrid Data Fusion
    ↓
-LLM (Hugging Face / OpenAI)
+LLM Response Generation
    ↓
-Response Generation
-   ↓
-LangChain Memory Storage
+Memory Storage (LangChain)
 ```
-
----
-
-## ⚙️ Tech Stack
-
-* **Language**: Python
-* **Embeddings**: Hugging Face Transformers
-* **Vector Database**: Pinecone
-* **Graph Database**: Neo4j
-* **LLM**: Hugging Face / OpenAI
-* **Framework**: LangChain
 
 ---
 
 ## 📂 Project Structure
 
 ```
-├── hybrid_chat.py       # Entry point of the application
-├── config.py            # Stores API keys and configurations
-├── embeddings/          # Handles embedding generation
-├── vector_db/           # Pinecone integration
-├── graph_db/            # Neo4j queries and logic
-├── memory/              # Conversation memory (LangChain)
-└── README.md            # Project documentation
+├── README.md                   # Project documentation
+├── architecture_diagram.png    # System architecture diagram
+├── config.py                   # API keys and configuration settings
+├── hybrid_chat.py              # Main application (entry point)
+├── improvements.md             # Future improvements and ideas
+
+├── load_to_neo4j.py            # Script to load dataset into Neo4j
+├── visualize_graph.py          # Graph visualization script
+├── neo4j_viz.html              # Exported graph visualization
+
+├── pinecone_upload.py          # Upload embeddings to Pinecone
+├── vietnam_travel_dataset.json # Travel dataset
+
+├── requirements.txt            # Dependencies
 ```
+
+---
+
+## ⚙️ Tech Stack
+
+* **Programming Language**: Python
+* **Embeddings**: Hugging Face Transformers
+* **Vector Database**: Pinecone
+* **Graph Database**: Neo4j
+* **LLM**: OpenAI / Hugging Face
+* **Framework**: LangChain
 
 ---
 
 ## 🔄 Workflow
 
-1. Run `hybrid_chat.py` to start the application
-2. Load configuration settings from `config.py`
+1. Run `hybrid_chat.py`
+2. Load configuration from `config.py`
 3. Convert user query into embeddings
 4. Perform similarity search in Pinecone
-5. Retrieve related data from Neo4j
-6. Combine all data for hybrid reasoning
+5. Fetch related entities from Neo4j
+6. Combine semantic + relational data
 7. Send structured prompt to LLM
 8. Generate and display response
-9. Store conversation using memory
-10. Use stored context for follow-up queries
+9. Store conversation in memory
+10. Handle follow-up queries using context
 
 ---
 
-## 🛠️ Installation
+## 🛠️ Setup Instructions
 
 ### 1. Clone the repository
 
@@ -101,7 +111,7 @@ pip install -r requirements.txt
 
 ### 3. Configure environment variables
 
-Create a `.env` file in the root directory and add:
+Create a `.env` file:
 
 ```
 OPENAI_API_KEY=your_api_key
@@ -113,37 +123,47 @@ NEO4J_PASSWORD=your_password
 
 ---
 
-## ▶️ Usage
+## ▶️ How to Run
 
-Run the application using:
+### Step 1: Upload data to Pinecone
+
+```bash
+python pinecone_upload.py
+```
+
+### Step 2: Load data into Neo4j
+
+```bash
+python load_to_neo4j.py
+```
+
+### Step 3: Run the chatbot
 
 ```bash
 python hybrid_chat.py
 ```
 
-Example query:
+---
+
+## 📊 Visualization
+
+* Graph visualization: `neo4j_viz.html`
+* Architecture diagram: `architecture_diagram.png`
+
+---
+
+## 📌 Example Query
 
 ```
-Suggest a 5-day trip plan to vietnam with nature and adventure activities
+Plan a 4-day trip to Vietnam with cultural and adventure activities
 ```
 
 ---
 
-## 📌 Use Cases
+## 🔮 Future Improvements
 
-* Travel itinerary generation
-* Destination discovery
-* Activity recommendations
-* Conversational travel assistance
-
----
-
-## 🔮 Future Enhancements
-
-* Integration with real-time travel APIs
-* Voice-based assistant support
+* Real-time travel API integration
+* Voice-based interaction
 * Web or mobile interface
 * Personalized recommendations using user profiles
-
-
 
